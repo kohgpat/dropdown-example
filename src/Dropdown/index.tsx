@@ -67,7 +67,7 @@ const initialState: State = {
   mouseOverContent: false,
 };
 
-const timeout = 300;
+const closeTimeout = 300;
 
 const Dropdown = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -89,7 +89,7 @@ const Dropdown = () => {
   const onToggleLeave = () => {
     setTimeout(() => {
       dispatch({ type: "leaveToggle" });
-    }, timeout);
+    }, closeTimeout);
   };
 
   const onContentEnter = () => {
@@ -99,7 +99,7 @@ const Dropdown = () => {
   const onContentLeave = () => {
     setTimeout(() => {
       dispatch({ type: "leaveContent" });
-    }, timeout);
+    }, closeTimeout);
   };
 
   const onClickOutside = () => {
