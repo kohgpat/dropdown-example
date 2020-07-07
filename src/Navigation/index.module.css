@@ -1,0 +1,67 @@
+.toggle {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--gray);
+  background-color: var(--white);
+  cursor: pointer;
+}
+
+.toggle:hover,
+.toggle:focus,
+.toggle:active {
+  color: var(--blue);
+}
+
+.toggleActive {
+  color: var(--blue);
+}
+
+.nav {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -20px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1);
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #ffffff;
+  z-index: 1;
+  position: relative;
+  top: 0;
+  left: 2rem;
+  transform: translate3d(-50%, -100%, 0);
+}
+
+.item {
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.item:hover,
+.item:focus,
+.item:active {
+  color: var(--blue);
+}
