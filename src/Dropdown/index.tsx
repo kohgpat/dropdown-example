@@ -62,7 +62,7 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
-const initialState = {
+const initialState: State = {
   mouseOverToggle: false,
   mouseOverContent: false,
 };
