@@ -68,7 +68,7 @@ const initialState = {
 
 const timeout = 300;
 
-const Navigation = () => {
+const Dropdown = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const wrapperRef = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -122,13 +122,13 @@ const Navigation = () => {
 
       {open && (
         <div
-          className={s.nav}
+          className={s.content}
           onMouseEnter={onContentEnter}
           onMouseLeave={onContentLeave}
         >
           <div className={s.caret} />
 
-          <nav className={s.content}>
+          <nav className={s.nav}>
             <a className={s.item} href="#blog">
               Blog
             </a>
@@ -148,4 +148,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Dropdown;
