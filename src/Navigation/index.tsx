@@ -2,11 +2,20 @@ import React, { useReducer } from "react";
 import cn from "classnames";
 import s from "./index.module.css";
 
-// type State = {
-//   el: React.ReactNode
-// }
+type State = {
+  mouseOverToggle: boolean;
+  mouseOverContent: boolean;
+};
 
-const reducer = (state: any, action: any) => {
+type Action =
+  | { type: "open" }
+  | { type: "close" }
+  | { type: "enterToggle" }
+  | { type: "leaveToggle" }
+  | { type: "enterContent" }
+  | { type: "leaveContent" };
+
+const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case "open": {
       return {
@@ -46,9 +55,7 @@ const reducer = (state: any, action: any) => {
       };
     }
     default: {
-      throw new Error(
-        `Unsupported action ${action.type} was passed: ${action}`
-      );
+      throw new Error(`Unsupported action was passed: ${action}`);
     }
   }
 };
