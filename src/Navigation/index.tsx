@@ -11,8 +11,7 @@ const reducer = (state: any, action: any) => {
     case "open": {
       return {
         ...state,
-        el: action.target,
-        open: true,
+        mouseOverToggle: true,
       };
     }
     case "close": {
@@ -55,8 +54,6 @@ const reducer = (state: any, action: any) => {
 };
 
 const initialState = {
-  open: false,
-  el: null,
   mouseOverToggle: false,
   mouseOverContent: false,
 };
@@ -67,7 +64,11 @@ const Navigation = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const onToggleClick = (e: React.MouseEvent) => {
-    dispatch({ type: "open", target: e.currentTarget });
+    if (state.mouseOverToggle || state.mouseOverContent) {
+      dispatch({ type: "close" });
+    } else {
+      dispatch({ type: "open" });
+    }
   };
 
   const onToggleEnter = () => {
