@@ -1,5 +1,6 @@
 import React, { useReducer, useRef } from "react";
 import cn from "classnames";
+import { motion } from "framer-motion";
 import useClickOutside from "../useClickOutside";
 import s from "./index.module.css";
 
@@ -109,6 +110,17 @@ const Dropdown = () => {
 
   const open = state.mouseOverToggle || state.mouseOverContent;
 
+  const contentAnimation = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
     <div ref={wrapperRef}>
       <button
@@ -121,10 +133,13 @@ const Dropdown = () => {
       </button>
 
       {open && (
-        <div
+        <motion.div
           className={s.content}
           onMouseEnter={onContentEnter}
           onMouseLeave={onContentLeave}
+          variants={contentAnimation}
+          initial="hidden"
+          animate="visible"
         >
           <div className={s.caret} />
 
@@ -142,7 +157,7 @@ const Dropdown = () => {
               Contact Us
             </a>
           </nav>
-        </div>
+        </motion.div>
       )}
     </div>
   );
