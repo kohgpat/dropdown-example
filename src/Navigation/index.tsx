@@ -1,5 +1,6 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useRef } from "react";
 import cn from "classnames";
+import useClickOutside from "../useClickOutside";
 import s from "./index.module.css";
 
 type State = {
@@ -70,7 +71,9 @@ const timeout = 300;
 const Navigation = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const onToggleClick = (e: React.MouseEvent) => {
+  const wrapperRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+
+  const onToggleClick = () => {
     if (state.mouseOverToggle || state.mouseOverContent) {
       dispatch({ type: "close" });
     } else {
@@ -98,10 +101,16 @@ const Navigation = () => {
     }, timeout);
   };
 
+  const onClickOutside = () => {
+    dispatch({ type: "close" });
+  };
+
+  useClickOutside(wrapperRef, onClickOutside);
+
   const open = state.mouseOverToggle || state.mouseOverContent;
 
   return (
-    <>
+    <div ref={wrapperRef}>
       <button
         className={cn(s.toggle, open && s.toggleActive)}
         onClick={onToggleClick}
@@ -135,7 +144,7 @@ const Navigation = () => {
           </nav>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
